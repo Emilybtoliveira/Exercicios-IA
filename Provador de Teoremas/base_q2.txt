@@ -1,0 +1,9 @@
+Se M = True entao K = True
+Se L = True && A = True ENTAO M = True
+Se K = True && L  = True && M = True  entao I  = True 
+Se A = True &&  B = False  entao C  = True 
+Se B = False entao L = TRUE
+
+A = True
+B = False
+L = False
