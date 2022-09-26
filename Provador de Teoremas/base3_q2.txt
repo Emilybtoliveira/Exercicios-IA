@@ -1,0 +1,25 @@
+Se K = True && R  = True  entao I = True 
+Se K = True && L  = True && M = True  entao I  = True 
+Se I  = True && L  = True && J = True  entao Q = True 
+Se C = True  && D = True  && E = True  entao B = True 
+Se Q = True && R = True entao M = True
+Se L = True  && N = True  && O = True  && P = True  entao Q = True 
+Se C = True  && G  = True entao R  = True 
+Se R  = True && J = True  && M = True  entao S = True  
+Se F = True  && H  = True entao J = True 
+Se F = True  && H  = True entao J = True 
+Se G  = True entao F  = True 
+Se I = True && M = False entao P = True
+Se S = True entao J = True
+Se N = False && O = True entao J = True
+Se I = True entao M = False
+Se Q = True && B = True entao A = True
+
+C = True
+D = True
+E = True
+G = True
+K = True
+F = True
+N = False
+O = True

@@ -1,0 +1,14 @@
+Se K = False && L  = False entao I  = False 
+Se C = True  && D = False  && E = True  entao F = True 
+Se A = True  && B = True  entao Q = True 
+Se C = True  && H  = True entao R  = True 
+Se F = True  && B  = False entao D = False
+Se G  = True entao H  = False 
+Se B = False entao L = False
+
+A = True
+C = True
+D = True
+E = True
+K = False
+B = False

@@ -1,4 +1,3 @@
-from ast import If
 from dataclasses import dataclass
 import string
 from typing import List
@@ -89,7 +88,7 @@ def generateDataStructure(base_sentences):
                 print("algo está errado no código inserido")
                 exit() #erro, nao reconhece            
  
-def loadBaseSentences(path="base_q2.txt"):
+def loadBaseSentences(path="base1_q2.txt"):
     with open(path, "r") as source:
         return source.read()
 
@@ -150,8 +149,6 @@ def getFactValue(var:string):
     for fact in facts_list:
         if fact.var == var:
             return fact
-    
-    return "nao tem valor???"
 
 def getFactVarEvaluation(var:string, var_val_in_sentence:string): #determina se o valor de um fato corresponde ao que se espera na sentença
     for fact in facts_list:
@@ -169,14 +166,14 @@ def evaluateASentence(sentence:Sentence): #Modus Ponens
             return False
             
     facts_list.append(Expression(sentence.expression_conseq_list[0].var, sentence.expression_conseq_list[0].val))
-    print(sentence.expression_conseq_list[0].var, sentence.expression_conseq_list[0].val)
+    #print(sentence.expression_conseq_list[0].var, sentence.expression_conseq_list[0].val)
     #print(facts_list)
     return True
     
 # ============= ENCADEAMENTO PRA TRÁS =========================
-""" def backwardChaining(goal_var:string):
+def backwardChaining(goal_var:string):
     if isVariableAFact(goal_var):
-        print(f"{goal_var} é um fato")
+        #print(f"{goal_var} é um fato")
         return True
     
     #print(f"{goal_var} não é um fato")
@@ -198,7 +195,7 @@ def evaluateASentence(sentence:Sentence): #Modus Ponens
                     break #n da p alcançar por essa sentença
                 else:
                     sentence_exp_fact_count -= 1
-
+            
             if sentence_exp_fact_count == 0: #tenho todas variaveis da sentença nos fatos
                 result = evaluateASentence(sentence) #chama função para avaliar sentença
                 if not result:
@@ -210,58 +207,14 @@ def evaluateASentence(sentence:Sentence): #Modus Ponens
                 
                 return
     else:
-        if goal_var != aimed_var:
-            print(f"{goal_var} é inalcançável por esse caminho.")
-            return -1
-
-    print(f"{goal_var} é indeduzível.")
-    return -1
-     """
-
-def backwardChaining(goal_var:string):
-    if isVariableAFact(goal_var):
-        print(f"{goal_var} é um fato")
-        return True
-    
-    #print(f"{goal_var} não é um fato")
-
-    var_conseq_sentences = getAllVariableConseqSentences(goal_var)
-    var_conseq_sentences = [sentence for sentence in var_conseq_sentences if sentence not in visited_sentences] #evita repetição de caminhos
-   
-    if var_conseq_sentences != []:
-        for sentence in var_conseq_sentences:
-            visited_sentences.append(sentence)            
-            
-            sentence_exp_fact_count = len(sentence.expression_antec_list)
-            #print(sentence)
-            
-            for expression in sentence.expression_antec_list:  
-                search_result = backwardChaining(expression.var)
-
-                if search_result == -1:
-                    break #n da p alcançar por essa sentença
-                else:
-                    sentence_exp_fact_count -= 1
-            
-            if sentence_exp_fact_count == 0: #tenho todas variaveis da sentença nos fatos
-                result = evaluateASentence(sentence) #chama função para avaliar sentença
-                if not result:
-                    return - 1 
-                elif isVariableAFact(aimed_var):
-                    print(f"{aimed_var} é um fato")
-                    #print(getFactValue(aimed_var))
-                    exit()
-                
-                return
-    else:
         if goal_var != aimed_var and goal_var not in asked_vars:
             print(f"{goal_var} é inalcançável por esse caminho. Perguntando ao usuário...")
             if asksTheUser(goal_var):
                 return True
         return -1
 
-    if goal_var != aimed_var:
-        print(f"{goal_var} é indeduzível.")
+    """ if goal_var != aimed_var:
+        print(f"{goal_var} é indeduzível.") """
     return -1
     
 # ============= ENCADEAMENTO PRA FRENTE =========================
@@ -269,6 +222,7 @@ def backwardChaining(goal_var:string):
 def forwardChaining(goal_var:string):
     if isVariableAFact(goal_var):
         print(f"{goal_var} é um fato")
+        print(getFactValue(goal_var))
         return True
 
     print(f"{goal_var} não é um fato")
@@ -306,6 +260,7 @@ def forwardChaining(goal_var:string):
             loops_with_no_deductions = 1
 
     print(f"Não consigo deduzir {goal_var}")
+    return False
 
 
 # ============= FUNÇÕES GERAIS =========================
@@ -323,7 +278,8 @@ def asksTheUser(var_in_question:string):
 
 
 if __name__ == '__main__':
-    base_sentences = loadBaseSentences()
+    aimed_var = input("Digite o nome do arquivo onde se encontra a base a ser lida. \n(Exemplo: base1_q2.txt): ")
+    base_sentences = loadBaseSentences(aimed_var)
     #print(base_sentences)
     splited = (base_sentences.replace("\n", " ")).split(" ")
     #print(splited)
@@ -331,11 +287,11 @@ if __name__ == '__main__':
     generateDataStructure(splited)
     #printBaseSentences()
 
-    aimed_var = input("Qual a variável de busca?: ")
+    aimed_var = input("\nQual a variável de busca?: ")
     aimed_var = aimed_var.upper()
 
     print("\nIniciando encadeamento pra frente...")
-    forwardChaining(aimed_var)
-    print("\nIniciando encadeamento pra trás...")
-    backwardChaining(aimed_var)
-    print(f"{aimed_var} é indeduzível.")
+    if not forwardChaining(aimed_var):
+        print("\nIniciando encadeamento pra trás...")
+        if not (backwardChaining(aimed_var) == True):
+            print(f"{aimed_var} é indeduzível.")
