@@ -1,0 +1,16 @@
+(K & L & M) -> I 
+(I & L & J) -> Q
+( A & B ) -> Q
+(C & D & E) -> B
+(L & N & O & P ) -> Q
+(C & H) -> R
+(R & J & M) -> S
+(F & H ) -> B
+G -> F
+A
+C
+D
+E
+G
+H
+K

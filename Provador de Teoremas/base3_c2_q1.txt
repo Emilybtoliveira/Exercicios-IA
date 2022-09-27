@@ -1,0 +1,14 @@
+SE Cartao = verificado AND Data = ~expirada AND Senha = correta AND Tentativas = ~excedidas AND Saldo = suficiente AND limSaque =~excedido ENTAO Pagamento = autorizado
+SE Cartao = ~verificado ENTAO Pagamento = ~autorizado
+SE Data = expirada ENTAO Pagamento = ~autorizado
+SE Senha = ~correta ENTAO Pagamento = ~autorizado
+SE Tentativas = excecidas ENTAO Pagamento = ~autorizado
+SE Saldo = ~suficiente ENTAO Pagamento=~autorizado
+SE limSaque = excedido ENTAO Pagamento = ~autorizado
+SE Pagamento = autorizado ENTAO Cartao = verificado
+SE Cartao = verificado ENTAO Senha = correta
+SE Senha = correta ENTAO Tentativas = ~excedidas
+Cartao = verificado
+Data = ~expirada
+Saldo = suficiente
+limSaque = ~excedido
