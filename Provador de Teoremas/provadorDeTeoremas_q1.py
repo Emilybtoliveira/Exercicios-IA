@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List
 
 
 operatorAnd = "^"
@@ -12,8 +13,8 @@ class Expression:
 
 @dataclass
 class Sentence:
-    expression_antec_list: list[Expression]
-    expression_conseq_list: list[Expression]
+    expression_antec_list: List[Expression]
+    expression_conseq_list: List[Expression]
 
 rules_list = [] # Sentences
 facts_list = []  # Expressions only
@@ -206,11 +207,12 @@ def resolucao(objetivo):
                 break
             
 def main():
+    file = input("Digite o nome do arquivo onde se encontra a base a ser lida. \n(Exemplo: base1_q1.txt): ")
 
-    readFileAndOutputsToList("base3_c1_q1.txt",operatorAnd)
+    readFileAndOutputsToList(file,operatorAnd)
 
-    obj = input("QUAL O OBJETIVO? FORMATO: VAR BOOL: ").split(" ")
-    varObj = obj[0]
+    obj = input("\nQUAL O OBJETIVO? \nFORMATO -> VAR BOOL \n").split(" ")
+    varObj = obj[0].title()
     boolobj = obj[1].lower() == "true"
 
     if not boolobj:
