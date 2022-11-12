@@ -1,10 +1,17 @@
-se fadiga = true && dor_de_cabeca = true && dores_no_corpo = true && ocasionais_dores_garganta = true && ocasionais_tosse = true entao covid19 = true FC = 0.80
-se dor_de_cabeça = true && garganta_inflamada = true && tosse = true entao gripe = true FC = 0.90
-se cansaco = true && dor_de_cabeca = true entao mononucleose_infecciosa = true FC = 0.95
-se cansaco = true && garganta_inflamanda = true entao amigdalite = true FC = 0.90
-se cansaco = true entao estresse = true FC = 0.70
-se fadiga = true && dor_de_cabeca = true && pulsação_elevada = true && baixo_nivel_de_oxigenio = true && perda_de_olfato = true && perda_de_paladar = true entao covid19 = true FC = 0.90
-se coriza = true && espirro = true entao rinite_alergica = true FC = 0.85
-se dor_de_cabeca = true && coriza = true entao sinusite = true FC = 0.80
-se febre_alta = true && dores_no_corpo = true && dor_atras_dos_olhos = true entao dengue = true FC = 0.80
-se febre_alta = true && dores_no_corpo = true && dor_atras_dos_olhos = true && manchas_vermelhas_no_corpo = true entao chicungunha = true FC = 0.90
+se tem_pelo = true entao é_mamifero = true
+se da_leite = true entao é_mamifero = true
+se tem_penas = true entao ave = true
+se voa = true && bota_ovos = true entao ave = true
+se é_mamifero = true && come_carne = true entao carnivoro = true
+se é_mamifero = true && tem_dentes_pontiagudos = true && tem_garras = true && olhos_frontais = true entao carnivoro = true
+se é_mamifero = true && tem_casco = true entao ungulado = true
+se é_mamifero = true && rumina = true && tem_dedos_pares = true entao ungulado = true
+se carnivoro = true && cor_tostado = true && tem_manchas_escuras = true entao leopardo = true
+se carnivoro = true && cor_amarelo_tostado = true && tem_listras_pretas = true entao tigre = true
+se ungulado = true && tem_pernas_longas = true && tem_pescoco_comprido = true && cor_amarelo_tostado = true && tem_manchas_escuras = true entao girafa = true
+se ungulado = true && tem_cor_branca = true && tem_listras_pretas = true entao zebra = true
+se ave = true && tem_pernas_longas = true && tem_pescoco_comprido = true && é_preto_e_branco = true entao avestruz = true
+se ave = true && voa = false && nada = true && é_preto_e_branco = true entao pinguim = true
+se ave = true && bom_voador = true entao albatroz = true
+se ave = true && tem_corpo_arredondado = true && tem_penas_densas = true && voa = false && é_domestico = true entao galinha = true
+se ave = true && tem_pernas_longas = true && tem_pescoco_comprido = true && tem_cauda_curta = true && é_cor_de_rosa = true entao flamingo = true
