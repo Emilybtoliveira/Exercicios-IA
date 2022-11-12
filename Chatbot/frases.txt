@@ -1,0 +1,3 @@
+dor de cabeca : você tem sentido os sintomas a seguir? dor de cabeca
+dor de barriga : você tem sentido os sintomas a seguir? dor de barriga
+fome : você tem sentido os sintomas a seguir? fome demais
