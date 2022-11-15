@@ -538,9 +538,9 @@ def generatePhrasesDataStructure():
 
 def editPhrasesFile():
     print("\nVocê poderá editar as frases do chatbot na janela a seguir.\nAo finalizar, salve e feche-a para continuar no fluxo da aplicação.\nMantenha o padrão de formatação do arquivo => variável:frase.")
-    #time.sleep(1)
+    time.sleep(4)
 
-    os.system("gedit config_files/phrases.txt")
+    os.system("nano config_files/phrases.txt")
     generatePhrasesDataStructure()
 
 def autoGeneratePhrases():    
@@ -566,8 +566,8 @@ def loadChatbotIntroduction():
 
 def createChatbotIntroduction():
     print("\nVocê poderá editar/criar uma introdução para o chatbot na janela a seguir.\nAo finalizar, salve e feche-a para continuar no fluxo da aplicação.")
-
-    os.system("gedit config_files/chatbot_intro.txt")
+    time.sleep(4)
+    os.system("nano config_files/chatbot_intro.txt")
     
     loadChatbotIntroduction()
     pressEnterToContinue()
@@ -583,8 +583,10 @@ def getClassVars():
         file.write(var_list_string)
 
     print(f"Você poderá editar as variáveis-objetivo na janela a seguir. Deixe no arquivo apenas as variáveis da base de conhecimento que são de classificação.\nAo finalizar, salve e feche-a para continuar no fluxo da aplicação.")
-    os.system("gedit config_files/KB_variables.txt")
-
+    
+    time.sleep(4)
+    os.system("nano config_files/KB_variables.txt")
+    
     with open("config_files/KB_variables.txt", "r") as file:
         var_list_string = file.read()
     
@@ -599,8 +601,10 @@ def editBase():
 
     originalFile = open("KB_Examples/" + selectedKB,'r').read()
     originalFileHash = originalFile.__hash__()
-    os.system("gedit KB_Examples/"+ selectedKB)
-
+    
+    time.sleep(4)
+    os.system("nano KB_Examples/"+ selectedKB)
+    
     afterFile = open("KB_Examples/" + selectedKB,'r').read()
     afterFileHash = afterFile.__hash__()
 
