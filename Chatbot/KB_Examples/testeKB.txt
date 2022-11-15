@@ -1,0 +1,1 @@
+se sol = true && chuva = true entao casamento_de_viuva = true
